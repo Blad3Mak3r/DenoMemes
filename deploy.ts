@@ -10,7 +10,8 @@ serve({
     _request: Record<string, unknown>,
     params: Record<string, unknown>,
   ) => {
-    const meme = await (params.slug);
+    const slug = params.slug as string
+    const meme = await getMeme(slug);
     return json(meme);
   },
   404: () => new Response("Not found"),
