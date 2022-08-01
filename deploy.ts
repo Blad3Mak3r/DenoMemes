@@ -6,6 +6,7 @@ serve({
     const meme = await getMeme();
     return json(meme);
   },
+  "/favicon.icon": () => new Response(404, "Not found"),
   "/:slug": async (
     _request: Record<string, unknown>,
     params: Record<string, unknown>,
@@ -14,5 +15,5 @@ serve({
     const meme = await getMeme(slug);
     return json(meme);
   },
-  404: () => new Response("Not found"),
+  404: () => new Response(404, "Not found"),
 });
