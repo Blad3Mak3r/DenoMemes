@@ -7,12 +7,12 @@ serve({
     return json(meme);
   },
   "/favicon.ico": () => json({ message: "Not found" }, { status: 404 }),
-  "/:slug": async (
+  "/r/:subreddit": async (
     _request: Record<string, unknown>,
     params: Record<string, unknown>,
   ) => {
-    const slug = params.slug as string
-    const meme = await getMeme(slug);
+    const subreddit = params.subreddit as string
+    const meme = await getMeme(subreddit);
     return json(meme);
   },
   404: () => json({ message: "Not found" }, { status: 404 }),
