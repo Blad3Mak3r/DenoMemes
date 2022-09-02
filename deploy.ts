@@ -6,12 +6,8 @@ serve({
     const meme = await getMeme();
     return json(meme);
   },
-  "/favicon.ico": () => json({ message: "Not found" }, { status: 404 }),
-  "/r/:subreddit": async (
-    _request: Record<string, unknown>,
-    params: Record<string, unknown>,
-  ) => {
-    const subreddit = params.subreddit as string
+  "/r/:subreddit": async (_request, _connInfo, params) => {
+    const subreddit = params?.subreddit
     const meme = await getMeme(subreddit);
     return json(meme);
   },
